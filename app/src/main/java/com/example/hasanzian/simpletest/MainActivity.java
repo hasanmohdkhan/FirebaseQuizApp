@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public ArrayList<String> OptionBArray = null;
     public ArrayList<String> OptionCArray = null;
     public ArrayList<String> OptionDArray = null;
+    public ArrayList<String> mCorrectAnswerArray = null;
     public int count = 0;
     TextView mTextview;
     Button mButton;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     DatabaseReference mOptionB = FirebaseDatabase.getInstance().getReference("OptionB");
     DatabaseReference mOptionC = FirebaseDatabase.getInstance().getReference("OptionC");
     DatabaseReference mOptionD = FirebaseDatabase.getInstance().getReference("OptionD");
+    DatabaseReference RightOption = FirebaseDatabase.getInstance().getReference("RightOption");
 
 
 
@@ -56,35 +58,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected  void onStart(){
      super.onStart();
         mRef.addValueEventListener(new ValueEventListener() {
+
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
-
-
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
-                    // TODO: handle the post
-
-
                     QuestionArray = (ArrayList) dataSnapshot.getValue();
                     Log.e("!)@@>>", dataSnapshot.getKey() + " " + dataSnapshot.getValue() + " " + dataSnapshot.getChildren() + " " + dataSnapshot.getChildrenCount());
                     Log.e("!_@@", QuestionArray.get(0) + ""); // use your counter value instead of 0
                     String text = child.getValue(String.class);
                     mContText.setText(text);
-
-
                 }
-
-
-
-
-
-
-
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         });
 
@@ -92,15 +79,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
            @Override
            public void onDataChange(DataSnapshot dataSnapshot) {
                for (DataSnapshot child : dataSnapshot.getChildren()) {
-                   // TODO: handle the post
-
-
                    OptionAArray = (ArrayList) dataSnapshot.getValue();
-
                    String text = child.getValue(String.class);
                    mContText.setText(text);
-
-
                }
            }
 
@@ -114,16 +95,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
-                    // TODO: handle the post
-
-
                     OptionBArray = (ArrayList) dataSnapshot.getValue();
                     Log.e("OptionB", dataSnapshot.getKey() + " " + dataSnapshot.getValue() + " " + dataSnapshot.getChildren() + " " + dataSnapshot.getChildrenCount());
-
                     String text = child.getValue(String.class);
                     mContText.setText(text);
-
-
                 }
             }
 
@@ -138,21 +113,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
-                    // TODO: handle the post
-
-
                     OptionCArray = (ArrayList) dataSnapshot.getValue();
-
                     String text = child.getValue(String.class);
                     mContText.setText(text);
-
-
                 }
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         });
 
@@ -161,15 +129,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
-                    // TODO: handle the post
-
-
                     OptionDArray = (ArrayList) dataSnapshot.getValue();
+                    String text = child.getValue(String.class);
+                    mContText.setText(text);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        //Correct Answer Code For storing correct Answer
+        RightOption.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    mCorrectAnswerArray = (ArrayList) dataSnapshot.getValue();
+                    Log.e("Corrtect Answer", dataSnapshot.getKey() + " " + dataSnapshot.getValue() + " " + dataSnapshot.getChildren() + " " + dataSnapshot.getChildrenCount());
 
                     String text = child.getValue(String.class);
                     mContText.setText(text);
-
-
                 }
             }
 
@@ -180,11 +161,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
 
-
-
-
-
-
+// end of OnStart method
     }
 
 
@@ -204,4 +181,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
+    // end of MainActivity
 }
