@@ -15,9 +15,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="line to display"
-        android:textSize="40sp"
-
-        />
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/textCount"
@@ -25,11 +24,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/nextButton"
-        android:layout_marginLeft="62dp"
-        android:layout_marginStart="62dp"
+        android:layout_below="@+id/OptionDdisplay"
         android:layout_marginTop="34dp"
-        android:text=""
+        android:text="Please Wait.....Loading"
         android:textSize="24sp" />
 
     <RadioButton
@@ -45,24 +42,6 @@
         android:text="" />
 
     <RadioButton
-        android:id="@+id/OptionBdisplay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/OptionAdisplay"
-        android:layout_alignBottom="@+id/OptionAdisplay"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:text="" />
-
-    <Button
-        android:id="@+id/nextButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Next" />
-
-    <RadioButton
         android:id="@+id/OptionCdisplay"
 
         android:layout_width="wrap_content"
@@ -73,11 +52,32 @@
         android:layout_marginTop="27dp" />
 
     <RadioButton
+        android:id="@+id/OptionBdisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/OptionCdisplay"
+        android:layout_alignStart="@+id/OptionCdisplay"
+        android:layout_below="@+id/OptionCdisplay"
+        android:layout_marginTop="30dp"
+        android:text="" />
+
+    <RadioButton
         android:id="@+id/OptionDdisplay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/OptionBdisplay"
         android:layout_alignStart="@+id/OptionBdisplay"
-        android:layout_alignTop="@+id/OptionCdisplay"
+        android:layout_below="@+id/OptionBdisplay"
+        android:layout_marginTop="29dp"
         android:text="" />
+
+    <Button
+        android:id="@+id/nextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textCount"
+        android:layout_marginTop="11dp"
+        android:text="Next" />
 </RelativeLayout>

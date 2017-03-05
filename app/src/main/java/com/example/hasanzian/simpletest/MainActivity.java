@@ -16,6 +16,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+
+//TODO
+//TODO 3) next thing to match user selected answer  with correct answer
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     public ArrayList<String> QuestionArray = null;
