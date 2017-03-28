@@ -1,12 +1,16 @@
 package com.example.hasanzian.simpletest;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,11 +32,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public ArrayList<String> OptionCArray = null;
     public ArrayList<String> OptionDArray = null;
     public ArrayList<String> mCorrectAnswerArray = null;
+
     public int count = 0;
+    public ArrayList<String> mUserInput = new ArrayList<>();
     TextView mTextview;
-    Button mButton;
+    Button mButton, mSubmit;
     TextView mContText;
     RadioButton mRadiobuttonA, mRadiobuttonB, mRadiobuttonC, mRadiobuttonD;
+    RadioGroup mRadioGroup;
     DatabaseReference mRef= FirebaseDatabase.getInstance().getReference("Question");
     DatabaseReference mOptionA = FirebaseDatabase.getInstance().getReference("OptionA");
     DatabaseReference mOptionB = FirebaseDatabase.getInstance().getReference("OptionB");
@@ -40,21 +47,71 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     DatabaseReference mOptionD = FirebaseDatabase.getInstance().getReference("OptionD");
     DatabaseReference RightOption = FirebaseDatabase.getInstance().getReference("RightOption");
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
     mTextview =(TextView) findViewById(R.id.TextView);
+        mRadioGroup = (RadioGroup) findViewById(R.id.RadioGroup);
         mRadiobuttonA = (RadioButton) findViewById(R.id.OptionAdisplay);
         mRadiobuttonB = (RadioButton) findViewById(R.id.OptionBdisplay);
         mRadiobuttonC = (RadioButton) findViewById(R.id.OptionCdisplay);
         mRadiobuttonD = (RadioButton) findViewById(R.id.OptionDdisplay);
+        mRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                // find which radio button is selected;
+                if (checkedId == R.id.OptionAdisplay) {
+                    String mRadioButtonValue = ((RadioButton) findViewById(mRadioGroup.getCheckedRadioButtonId())).getText().toString();
+                    mUserInput.add(mRadioButtonValue);
+                    Toast.makeText(getApplicationContext(), "" + mRadioButtonValue, Toast.LENGTH_SHORT).show();
+                } else if (checkedId == R.id.OptionBdisplay) {
+
+                    String mRadioButtonValue = ((RadioButton) findViewById(mRadioGroup.getCheckedRadioButtonId())).getText().toString();
+                    mUserInput.add(mRadioButtonValue);
+                    Toast.makeText(getApplicationContext(), "" + mRadioButtonValue, Toast.LENGTH_SHORT).show();
+                } else if (checkedId == R.id.OptionCdisplay) {
+
+                    String mRadioButtonValue = ((RadioButton) findViewById(mRadioGroup.getCheckedRadioButtonId())).getText().toString();
+                    mUserInput.add(mRadioButtonValue);
+                    Toast.makeText(getApplicationContext(), "" + mRadioButtonValue, Toast.LENGTH_SHORT).show();
+                } else if (checkedId == R.id.OptionDdisplay) {
+
+                    String mRadioButtonValue = ((RadioButton) findViewById(mRadioGroup.getCheckedRadioButtonId())).getText().toString();
+                    mUserInput.add(mRadioButtonValue);
+                    Toast.makeText(getApplicationContext(), "" + mRadioButtonValue, Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
+        });
+
+
+
+
+
         mContText = (TextView) findViewById(R.id.textCount);
         mButton = (Button) findViewById(R.id.nextButton);
+        mSubmit = (Button) findViewById(R.id.submit);
         mButton.setOnClickListener(this);
+
+        final Intent intent = new Intent(this, ResultActivity.class);
+        intent.putStringArrayListExtra("Key", mUserInput);
+
+
+        mSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(intent);
+            }
+        });
+
+
+
+
+
+
 
     }
 
@@ -180,9 +237,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         count++;
+        // TODO: 24-03-2017  We have to move submit code to separate method
+        //  TODO: so that submit button dont incresment the counter <--- Problem;
+
+
+        if (v == mSubmit) {
+            //String for geting selected Radio Button
+            //String mRadioButtonValue = ((RadioButton) findViewById(mRadioGroup.getCheckedRadioButtonId())).getText().toString();
+            //Adding user selected Input to array for later checking for answer
+            // mUserInput.add(mRadioButtonValue);
+            // Toast.makeText(this,"S: "+mRadioButtonValue,Toast.LENGTH_SHORT).show();
+            //mUserInput.toString();
+
+
+        }
 
 
     }
+
+
 
 
     // end of MainActivity
