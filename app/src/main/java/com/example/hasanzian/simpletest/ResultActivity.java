@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class ResultActivity extends AppCompatActivity {
 
-    TextView mResultView;
+    TextView mResultView, textView2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,13 +22,15 @@ public class ResultActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         ArrayList<String> result = intent.getStringArrayListExtra("Key");
+        ArrayList<String> mAnsKeys = intent.getStringArrayListExtra("Ans");
 
-
-        //  ArrayList<String>   result = (ArrayList<String>) getIntent().getSerializableExtra("result");
+        textView2 = (TextView) findViewById(R.id.textView2);
         mResultView = (TextView) findViewById(R.id.ResultView);
 
         mResultView.setText(result.toString());
-        //result =intent.getStringArrayListExtra("result");//
+        // mResultView.setText("------AnsKey------");
+        textView2.setText(mAnsKeys.toString());
+
 
 
     }

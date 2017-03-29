@@ -26,14 +26,15 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    public ArrayList<String> QuestionArray = null;
-    public ArrayList<String> OptionAArray = null;
-    public ArrayList<String> OptionBArray = null;
-    public ArrayList<String> OptionCArray = null;
-    public ArrayList<String> OptionDArray = null;
-    public ArrayList<String> mCorrectAnswerArray = null;
+    public ArrayList<String> QuestionArray;//= null;
+    public ArrayList<String> OptionAArray;//= null;
+    public ArrayList<String> OptionBArray;//= null;
+    public ArrayList<String> OptionCArray;//= null;
+    public ArrayList<String> OptionDArray;//= null;
+    public ArrayList<String> mCorrectAnswerArray;//= null;
 
     public int count = 0;
+    public Intent intent;
     public ArrayList<String> mUserInput = new ArrayList<>();
     TextView mTextview;
     Button mButton, mSubmit;
@@ -66,21 +67,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     String mRadioButtonValue = ((RadioButton) findViewById(mRadioGroup.getCheckedRadioButtonId())).getText().toString();
                     mUserInput.add(mRadioButtonValue);
                     Toast.makeText(getApplicationContext(), "" + mRadioButtonValue, Toast.LENGTH_SHORT).show();
+
                 } else if (checkedId == R.id.OptionBdisplay) {
 
                     String mRadioButtonValue = ((RadioButton) findViewById(mRadioGroup.getCheckedRadioButtonId())).getText().toString();
                     mUserInput.add(mRadioButtonValue);
                     Toast.makeText(getApplicationContext(), "" + mRadioButtonValue, Toast.LENGTH_SHORT).show();
+
                 } else if (checkedId == R.id.OptionCdisplay) {
 
                     String mRadioButtonValue = ((RadioButton) findViewById(mRadioGroup.getCheckedRadioButtonId())).getText().toString();
                     mUserInput.add(mRadioButtonValue);
                     Toast.makeText(getApplicationContext(), "" + mRadioButtonValue, Toast.LENGTH_SHORT).show();
+
                 } else if (checkedId == R.id.OptionDdisplay) {
 
                     String mRadioButtonValue = ((RadioButton) findViewById(mRadioGroup.getCheckedRadioButtonId())).getText().toString();
                     mUserInput.add(mRadioButtonValue);
                     Toast.makeText(getApplicationContext(), "" + mRadioButtonValue, Toast.LENGTH_SHORT).show();
+
                 }
 
 
@@ -96,8 +101,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mSubmit = (Button) findViewById(R.id.submit);
         mButton.setOnClickListener(this);
 
-        final Intent intent = new Intent(this, ResultActivity.class);
+
+        intent = new Intent(this, ResultActivity.class);
         intent.putStringArrayListExtra("Key", mUserInput);
+
+
+        // to checking question
+
+
+
+
+
 
 
         mSubmit.setOnClickListener(new View.OnClickListener() {
@@ -118,17 +132,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected  void onStart(){
      super.onStart();
+
         mRef.addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+
+
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
+
                     QuestionArray = (ArrayList) dataSnapshot.getValue();
-                    Log.e("!)@@>>", dataSnapshot.getKey() + " " + dataSnapshot.getValue() + " " + dataSnapshot.getChildren() + " " + dataSnapshot.getChildrenCount());
-                    Log.e("!_@@", QuestionArray.get(0) + ""); // use your counter value instead of 0
+                    //  Log.e("!)@@>>", dataSnapshot.getKey() + " " + dataSnapshot.getValue() + " " + dataSnapshot.getChildren() + " " + dataSnapshot.getChildrenCount());
+                    //Log.e("!_@@", QuestionArray.get(0) + ""); // use your counter value instead of 0
                     String text = child.getValue(String.class);
                     mContText.setText(text);
+                    //checking for data load
+
+
+
+
                 }
+
+
             }
 
             @Override
@@ -144,6 +169,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                    String text = child.getValue(String.class);
                    mContText.setText(text);
                }
+
+
            }
 
            @Override
@@ -157,7 +184,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
                     OptionBArray = (ArrayList) dataSnapshot.getValue();
-                    Log.e("OptionB", dataSnapshot.getKey() + " " + dataSnapshot.getValue() + " " + dataSnapshot.getChildren() + " " + dataSnapshot.getChildrenCount());
+                    //  Log.e("OptionB", dataSnapshot.getKey() + " " + dataSnapshot.getValue() + " " + dataSnapshot.getChildren() + " " + dataSnapshot.getChildrenCount());
                     String text = child.getValue(String.class);
                     mContText.setText(text);
                 }
@@ -208,11 +235,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
                     mCorrectAnswerArray = (ArrayList) dataSnapshot.getValue();
-                    Log.e("Corrtect Answer", dataSnapshot.getKey() + " " + dataSnapshot.getValue() + " " + dataSnapshot.getChildren() + " " + dataSnapshot.getChildrenCount());
-
+                    //Log.e("Corrtect Answer", dataSnapshot.getKey() + " " + dataSnapshot.getValue() + " " + dataSnapshot.getChildren() + " " + dataSnapshot.getChildrenCount());
+                    Log.e("!)@@>>", dataSnapshot.getKey() + " " + dataSnapshot.getValue() + " " + dataSnapshot.getChildren() + " " + dataSnapshot.getChildrenCount());
                     String text = child.getValue(String.class);
                     mContText.setText(text);
                 }
+
+
+                intent.putStringArrayListExtra("Ans", mCorrectAnswerArray);
+
+
             }
 
             @Override
@@ -220,6 +252,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             }
         });
+
+        //Boolean mArrayStatus
+
+
+
+
+
 
 
 // end of OnStart method
@@ -229,14 +268,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+
+
         mTextview.setText(QuestionArray.get(count).toString());
         mRadiobuttonA.setText(OptionAArray.get(count).toString());
         mRadiobuttonB.setText(OptionBArray.get(count).toString());
         mRadiobuttonC.setText(OptionCArray.get(count).toString());
         mRadiobuttonD.setText(OptionDArray.get(count).toString());
 
+        if (count > 0) {
+            mRadioGroup.clearCheck();
+
+        }
 
         count++;
+
+
         // TODO: 24-03-2017  We have to move submit code to separate method
         //  TODO: so that submit button dont incresment the counter <--- Problem;
 
