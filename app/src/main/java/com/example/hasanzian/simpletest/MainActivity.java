@@ -26,10 +26,10 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    public ArrayList<String> QuestionArray;//= null;
-    public ArrayList<String> OptionAArray;//= null;
-    public ArrayList<String> OptionBArray;//= null;
-    public ArrayList<String> OptionCArray;//= null;
+    public ArrayList<String> QuestionArray;
+    public ArrayList<String> OptionAArray;
+    public ArrayList<String> OptionBArray;
+    public ArrayList<String> OptionCArray;
     public ArrayList<String> OptionDArray;//= null;
     public ArrayList<String> mCorrectAnswerArray;//= null;
 
@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView mContText;
     RadioButton mRadiobuttonA, mRadiobuttonB, mRadiobuttonC, mRadiobuttonD;
     RadioGroup mRadioGroup;
+    //firebase code
     DatabaseReference mRef= FirebaseDatabase.getInstance().getReference("Question");
     DatabaseReference mOptionA = FirebaseDatabase.getInstance().getReference("OptionA");
     DatabaseReference mOptionB = FirebaseDatabase.getInstance().getReference("OptionB");
