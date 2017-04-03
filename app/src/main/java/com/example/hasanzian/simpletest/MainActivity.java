@@ -21,9 +21,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 
-//TODO
-//TODO 3) next thing to match user selected answer  with correct answer
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     public ArrayList<String> QuestionArray;
@@ -283,10 +280,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         count++;
-
-
-        // TODO: 24-03-2017  We have to move submit code to separate method
-        //  TODO: so that submit button dont incresment the counter <--- Problem;
 
 
         if (v == mSubmit) {
