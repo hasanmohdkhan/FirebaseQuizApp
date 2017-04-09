@@ -81,7 +81,8 @@ public class ChatScreen extends AppCompatActivity {
         mMessageListView.setAdapter(mMessageAdapter);
 
         // Initialize progress bar
-        mProgressBar.setVisibility(ProgressBar.INVISIBLE);
+        mProgressBar.setVisibility(ProgressBar.VISIBLE);
+
 
         // ImagePickerButton shows an image picker to upload a image for a message
         mPhotoPickerButton.setOnClickListener(new View.OnClickListener() {
@@ -134,6 +135,7 @@ public class ChatScreen extends AppCompatActivity {
         mChildEventListener = new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                mProgressBar.setVisibility(ProgressBar.INVISIBLE);
                 FriendlyMessage friendlyMessage = dataSnapshot.getValue(FriendlyMessage.class);
                 mMessageAdapter.add(friendlyMessage);
             }
@@ -169,7 +171,7 @@ public class ChatScreen extends AppCompatActivity {
                     .addOnSuccessListener(this, new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             // When the image has successfully uploaded, we get its download URL
-                            Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                            @SuppressWarnings("VisibleForTests") Uri downloadUrl = taskSnapshot.getDownloadUrl();
 
                             // Set the download URL to the message box, so that the user can send it to the database
                             FriendlyMessage friendlyMessage = new FriendlyMessage(null, mUsername, downloadUrl.toString());

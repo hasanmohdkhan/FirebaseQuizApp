@@ -10,6 +10,14 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.hasanzian.simpletest.MainActivity">
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true" />
+
     <TextView
         android:id="@+id/TextView"
         android:layout_width="match_parent"
@@ -23,25 +31,12 @@
         android:id="@+id/RadioGroup"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/textCount"
-        android:layout_marginTop="35dp"
         android:weightSum="1"
         tools:ignore="NotSibling">
 
-
-        <RadioButton
-            android:id="@+id/OptionAdisplay"
-            android:layout_width="323dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/TextView"
-            android:layout_marginLeft="11dp"
-            android:layout_marginStart="11dp"
-            android:layout_marginTop="34dp"
-            android:text="" />
 
         <RadioButton
             android:id="@+id/OptionDdisplay"
@@ -76,6 +71,18 @@
             android:text=""
             tools:ignore="ObsoleteLayoutParam" />
 
+        <RadioButton
+            android:id="@+id/OptionAdisplay"
+            android:layout_width="323dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/TextView"
+            android:layout_marginLeft="11dp"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="34dp"
+            android:text="" />
+
         <Button
             android:id="@+id/submit"
             android:layout_width="wrap_content"
@@ -85,6 +92,8 @@
         <Button
             android:id="@+id/nextButton"
 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/textCount"
             android:layout_marginTop="11dp"
             android:text="Next" />

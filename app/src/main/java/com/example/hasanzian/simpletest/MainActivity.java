@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -27,9 +28,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public ArrayList<String> OptionAArray;
     public ArrayList<String> OptionBArray;
     public ArrayList<String> OptionCArray;
-    public ArrayList<String> OptionDArray;//= null;
-    public ArrayList<String> mCorrectAnswerArray;//= null;
-
+    public ArrayList<String> OptionDArray;
+    public ArrayList<String> mCorrectAnswerArray;
     public int count = 0;
     public Intent intent;
     public ArrayList<String> mUserInput = new ArrayList<>();
@@ -45,18 +45,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     DatabaseReference mOptionC = FirebaseDatabase.getInstance().getReference("OptionC");
     DatabaseReference mOptionD = FirebaseDatabase.getInstance().getReference("OptionD");
     DatabaseReference RightOption = FirebaseDatabase.getInstance().getReference("RightOption");
+    private ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-    mTextview =(TextView) findViewById(R.id.TextView);
+        mTextview = (TextView) findViewById(R.id.TextView);
         mRadioGroup = (RadioGroup) findViewById(R.id.RadioGroup);
         mRadiobuttonA = (RadioButton) findViewById(R.id.OptionAdisplay);
         mRadiobuttonB = (RadioButton) findViewById(R.id.OptionBdisplay);
         mRadiobuttonC = (RadioButton) findViewById(R.id.OptionCdisplay);
         mRadiobuttonD = (RadioButton) findViewById(R.id.OptionDdisplay);
+        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
+        mProgressBar.setVisibility(ProgressBar.VISIBLE);
         mRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
@@ -135,6 +138,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+
+                mProgressBar.setVisibility(ProgressBar.INVISIBLE);
 
 
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
@@ -267,6 +272,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
+        int mArraySize = QuestionArray.size();
+        Log.d("mArray Size :", " " + mArraySize);
 
         mTextview.setText(QuestionArray.get(count).toString());
         mRadiobuttonA.setText(OptionAArray.get(count).toString());
@@ -278,20 +285,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             mRadioGroup.clearCheck();
 
         }
-
         count++;
-
-
-        if (v == mSubmit) {
-            //String for geting selected Radio Button
-            //String mRadioButtonValue = ((RadioButton) findViewById(mRadioGroup.getCheckedRadioButtonId())).getText().toString();
-            //Adding user selected Input to array for later checking for answer
-            // mUserInput.add(mRadioButtonValue);
-            // Toast.makeText(this,"S: "+mRadioButtonValue,Toast.LENGTH_SHORT).show();
-            //mUserInput.toString();
-
-
-        }
 
 
     }

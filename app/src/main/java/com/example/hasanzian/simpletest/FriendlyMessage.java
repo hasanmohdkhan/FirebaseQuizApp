@@ -21,7 +21,6 @@ public class FriendlyMessage {
     private String name;
     private String photoUrl;
 
-    // Constructor
     public FriendlyMessage() {
     }
 
