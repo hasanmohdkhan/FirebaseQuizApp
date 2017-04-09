@@ -156,6 +156,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 }
 
+                mTextview.setText(QuestionArray.get(count).toString());
 
             }
 
@@ -172,7 +173,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                    String text = child.getValue(String.class);
                    mContText.setText(text);
                }
-
+               mRadiobuttonA.setText(OptionAArray.get(count).toString());
 
            }
 
@@ -191,6 +192,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     String text = child.getValue(String.class);
                     mContText.setText(text);
                 }
+                mRadiobuttonB.setText(OptionBArray.get(count).toString());
             }
 
             @Override
@@ -208,6 +210,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     String text = child.getValue(String.class);
                     mContText.setText(text);
                 }
+
+                mRadiobuttonC.setText(OptionCArray.get(count).toString());
             }
 
             @Override
@@ -224,6 +228,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     String text = child.getValue(String.class);
                     mContText.setText(text);
                 }
+                mRadiobuttonD.setText(OptionDArray.get(count).toString());
             }
 
             @Override
@@ -271,9 +276,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-
         int mArraySize = QuestionArray.size();
         Log.d("mArray Size :", " " + mArraySize);
+        count++;
+
+        if (mArraySize == count) {
+            count = 0;
+            Log.d("hasan:", " " + count);
+        }
+
+
+
+
 
         mTextview.setText(QuestionArray.get(count).toString());
         mRadiobuttonA.setText(OptionAArray.get(count).toString());
@@ -285,7 +299,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             mRadioGroup.clearCheck();
 
         }
-        count++;
 
 
     }
