@@ -52,13 +52,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mTextview = (TextView) findViewById(R.id.TextView);
+
         mRadioGroup = (RadioGroup) findViewById(R.id.RadioGroup);
         mRadiobuttonA = (RadioButton) findViewById(R.id.OptionAdisplay);
         mRadiobuttonB = (RadioButton) findViewById(R.id.OptionBdisplay);
         mRadiobuttonC = (RadioButton) findViewById(R.id.OptionCdisplay);
         mRadiobuttonD = (RadioButton) findViewById(R.id.OptionDdisplay);
         mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
+        mRadioGroup.setVisibility(View.INVISIBLE);
+
+
+
+
         mProgressBar.setVisibility(ProgressBar.VISIBLE);
         mRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -155,7 +160,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
                 }
-
+                mTextview = (TextView) findViewById(R.id.TextView);
                 mTextview.setText(QuestionArray.get(count).toString());
 
             }
@@ -173,6 +178,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                    String text = child.getValue(String.class);
                    mContText.setText(text);
                }
+               mRadioGroup.setVisibility(View.VISIBLE); //setting Radio group to visible
+
                mRadiobuttonA.setText(OptionAArray.get(count).toString());
 
            }
