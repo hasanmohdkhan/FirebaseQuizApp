@@ -75,7 +75,7 @@
 
         <RadioButton
             android:id="@+id/OptionAdisplay"
-            android:layout_width="323dp"
+            android:layout_width="348dp"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"

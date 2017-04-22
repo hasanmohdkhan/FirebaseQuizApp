@@ -36,12 +36,12 @@ public class HomeScreen extends AppCompatActivity implements View.OnClickListene
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home_page);
+        setContentView(R.layout.home_screen_cardvvew);
         mUsername = ANONYMOUS;
         mFirebaseAuth = FirebaseAuth.getInstance();
 
-        mExam = (Button) findViewById(R.id.btn_exam);
-        mChat = (Button) findViewById(R.id.btn_chat);
+        mExam = (Button) findViewById(R.id.btnExam);
+        mChat = (Button) findViewById(R.id.btnChat);
         mExam.setOnClickListener(this);
         mChat.setOnClickListener(this);
         intent = new Intent(this, MainActivity.class);
@@ -69,7 +69,7 @@ public class HomeScreen extends AppCompatActivity implements View.OnClickListene
 
                     startActivityForResult(
                             AuthUI.getInstance()
-                                    .createSignInIntentBuilder()
+                                    .createSignInIntentBuilder().setIsSmartLockEnabled(false)
                                     .setProviders(Arrays.asList(new AuthUI.IdpConfig.Builder(AuthUI.EMAIL_PROVIDER).build(),
                                             new AuthUI.IdpConfig.Builder(AuthUI.GOOGLE_PROVIDER).build(),
                                             new AuthUI.IdpConfig.Builder(AuthUI.FACEBOOK_PROVIDER).build(),
@@ -140,16 +140,17 @@ public class HomeScreen extends AppCompatActivity implements View.OnClickListene
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_exam: {
-                startActivity(intent);
+            case R.id.btnExam: {
 
+                startActivity(intent);
+                Toast.makeText(getApplicationContext(), "Exam", Toast.LENGTH_SHORT).show();
 
             }
             break;
-            case R.id.btn_chat: {
+            case R.id.btnChat: {
 
                 startActivity(i);
-
+                Toast.makeText(getApplicationContext(), "chat", Toast.LENGTH_SHORT).show();
             }
             break;
 
