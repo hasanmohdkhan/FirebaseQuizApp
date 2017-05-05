@@ -4,20 +4,49 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="1">
+    >
 
-    <TextView
-        android:id="@+id/ResultView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.48"
-        android:text="" />
+<android.support.v7.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
 
-    <TextView
-        android:id="@+id/textView2"
+    >
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.64"
-        android:text="Ans"
-        tools:ignore="HardcodedText" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/ResultView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text=""
+            android:textSize="24sp"
+            android:textColor="@color/errorColor"
+            />
+
+
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Ans"
+            android:textSize="24sp"
+            android:textColor="@color/tw__blue_pressed"
+            tools:ignore="HardcodedText" />
+
+
+
+    </LinearLayout>
+
+
+
+
+</android.support.v7.widget.CardView>
+
+
 </LinearLayout>
