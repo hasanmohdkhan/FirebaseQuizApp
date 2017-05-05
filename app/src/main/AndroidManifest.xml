@@ -28,12 +28,24 @@
         </activity>
         <activity
             android:name=".ResultActivity"
-            android:label="Result"></activity>
+            android:label="Result">
+
+        </activity>
 
         <activity android:name=".ChatScreen">
 
 
         </activity>
+        <activity
+            android:name=".CategoryActivity"
+            android:label="Category">
+
+
+        </activity>
+
+
+
+
 
     </application>
 

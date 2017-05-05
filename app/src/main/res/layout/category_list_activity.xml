@@ -27,12 +27,12 @@
                android:textColor="#000"
                />
            <Button
-               android:id="@+id/btn_category_one"
+               android:id="@+id/btn_category_one_exam"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:text="Start"
               android:layout_gravity="right"
-               android:backgroundColor="#388E3C"
+
 
                />
 

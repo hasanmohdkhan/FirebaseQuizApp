@@ -44,7 +44,7 @@ public class HomeScreen extends AppCompatActivity implements View.OnClickListene
         mChat = (Button) findViewById(R.id.btnChat);
         mExam.setOnClickListener(this);
         mChat.setOnClickListener(this);
-        intent = new Intent(this, MainActivity.class);
+        intent = new Intent(this, CategoryActivity.class);
         i = new Intent(this, ChatScreen.class);
 
         //new Auth listener
