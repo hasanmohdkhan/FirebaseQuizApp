@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mButton = (Button) findViewById(R.id.nextButton);
         mSubmit = (Button) findViewById(R.id.submit);
         mButton.setOnClickListener(this);
-
+        mContText.setVisibility(View.INVISIBLE);
 
         intent = new Intent(this, ResultActivity.class);
         intent.putStringArrayListExtra("Key", mUserInput);
