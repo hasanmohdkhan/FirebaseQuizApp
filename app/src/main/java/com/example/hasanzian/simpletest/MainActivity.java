@@ -2,6 +2,7 @@ package com.example.hasanzian.simpletest;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -46,6 +47,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     DatabaseReference RightOption = FirebaseDatabase.getInstance().getReference("RightOption");
     private ProgressBar mProgressBar;
     TextView textTimer;
+    MyCountDownTimer myCountDownTimer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,6 +111,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mSubmit = (Button) findViewById(R.id.submit);
         mButton.setOnClickListener(this);
         mContText.setVisibility(View.INVISIBLE);
+        mButton.setVisibility(View.INVISIBLE);
+        mSubmit.setVisibility(View.INVISIBLE);
 
         intent = new Intent(this, ResultActivity.class);
         intent.putStringArrayListExtra("Key", mUserInput);
@@ -140,7 +145,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected  void onStart(){
      super.onStart();
 
+
+
+
+
         mRef.addValueEventListener(new ValueEventListener() {
+
+
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -161,6 +172,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
                 }
+                myCountDownTimer = new MyCountDownTimer(10000, 1000);
+                myCountDownTimer.start();
+                mButton.setVisibility(View.VISIBLE);
+                mSubmit.setVisibility(View.VISIBLE);
+
                 mTextview = (TextView) findViewById(R.id.TextView);
                 mTextview.setText(QuestionArray.get(count).toString());
 
@@ -310,6 +326,39 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     }
+
+    class MyCountDownTimer extends CountDownTimer {
+
+
+        /**
+         * @param millisInFuture    The number of millis in the future from the call
+         *                          to {@link #start()} until the countdown is done and {@link #onFinish()}
+         *                          is called.
+         * @param countDownInterval The interval along the way to receive
+         *                          {@link #onTick(long)} callbacks.
+         */
+        public MyCountDownTimer(long millisInFuture, long countDownInterval) {
+            super(millisInFuture, countDownInterval);
+        }
+
+        @Override
+        public void onTick(long millisUntilFinished) {
+            int progress = (int) (millisUntilFinished/1000);
+            textTimer.setText("Time Left: "+progress);
+
+
+        }
+
+        @Override
+        public void onFinish() {
+            myCountDownTimer.cancel();
+            textTimer.setVisibility(View.INVISIBLE);
+            startActivity(intent);
+
+
+        }
+    }
+
 
 
 

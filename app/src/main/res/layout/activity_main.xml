@@ -11,10 +11,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/TextTimerShow"
-    android:text="Timer: "
+    android:text=""
     android:textSize="20dp"
-    android:textColor="@drawable/tw__btn_composer_tweet"
-
+    android:textColor="@color/colorPrimary"
+    android:textStyle="bold"
     style="@style/Base.TextAppearance.AppCompat.Large"/>
 
     <!-- Question Text View & card View -->
