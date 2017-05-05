@@ -27,13 +27,15 @@ public class ResultActivity extends AppCompatActivity {
         textView2 = (TextView) findViewById(R.id.textView2);
         mResultView = (TextView) findViewById(R.id.ResultView);
 
-        mResultView.setText(result.toString());
+       // mResultView.setText(result.toString());
         // mResultView.setText("------AnsKey------");
         //textView2.setText(mAnsKeys.toString());
         ArrayList<String> mMark = new ArrayList<>(result);
         mMark.retainAll(mAnsKeys);
         int num = mMark.size();
+        int wrong= Math.abs(mAnsKeys.size()-num);
         textView2.setText("You got : " + num);
+        mResultView.setText("Wrong Ans : " +wrong);
 
 
 
