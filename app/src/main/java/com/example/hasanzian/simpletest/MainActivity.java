@@ -21,7 +21,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     public ArrayList<String> QuestionArray;
@@ -46,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     DatabaseReference mOptionD = FirebaseDatabase.getInstance().getReference("OptionD");
     DatabaseReference RightOption = FirebaseDatabase.getInstance().getReference("RightOption");
     private ProgressBar mProgressBar;
+    TextView textTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mRadiobuttonC = (RadioButton) findViewById(R.id.OptionCdisplay);
         mRadiobuttonD = (RadioButton) findViewById(R.id.OptionDdisplay);
         mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
+        textTimer=(TextView)findViewById(R.id.TextTimerShow);
         mRadioGroup.setVisibility(View.INVISIBLE);
 
 

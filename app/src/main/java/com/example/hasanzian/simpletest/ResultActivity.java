@@ -33,6 +33,7 @@ public class ResultActivity extends AppCompatActivity {
         ArrayList<String> mMark = new ArrayList<>(result);
         mMark.retainAll(mAnsKeys);
         int num = mMark.size();
+        //TODO Logic About Corret And Wrong Ans
         int wrong= Math.abs(mAnsKeys.size()-num);
         textView2.setText("You got : " + num);
         mResultView.setText("Wrong Ans : " +wrong);
