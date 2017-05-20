@@ -12,7 +12,7 @@ import android.widget.Button;
 
 public class CategoryActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button Btn_exam;
+    Button Btn_exam, Btn_Gate,Btn_App;
 
 
     @Override
@@ -20,8 +20,12 @@ public class CategoryActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.category_list_activity);
         Btn_exam=(Button)findViewById(R.id.btn_category_one_exam);
+        Btn_Gate=(Button)findViewById(R.id.btn_category_two);
+        Btn_App=(Button)findViewById(R.id.btn_category_three);
 
         Btn_exam.setOnClickListener(this);
+        Btn_Gate.setOnClickListener(this);
+        Btn_App.setOnClickListener(this);
 
 
 
@@ -30,8 +34,26 @@ public class CategoryActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        int id=v.getId();
+        switch(id) {
+            case R.id.btn_category_one_exam:
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn_category_two:
+                Intent intent1 = new Intent(this, GateAcivity.class);
+                startActivity(intent1);
+                break;
+            case R.id.btn_category_three:
+                Intent intent2 = new Intent(this, ThirdExamClass.class);
+                startActivity(intent2);
+                break;
+
+
+
+
+        }
+
 
     }
 }

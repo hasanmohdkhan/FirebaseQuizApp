@@ -43,7 +43,18 @@
 
         </activity>
 
+        <activity
+            android:name=".GateAcivity"
+            android:label="GATE">
 
+
+        </activity>
+        <activity
+            android:name=".ThirdExamClass"
+            android:label="Aptitude">
+
+
+        </activity>
 
 
 

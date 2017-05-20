@@ -30,7 +30,7 @@ public class ResultActivity extends AppCompatActivity {
        // mResultView.setText(result.toString());
         // mResultView.setText("------AnsKey------");
         //textView2.setText(mAnsKeys.toString());
-        ArrayList<String> mMark = new ArrayList<>(result);
+          ArrayList<String> mMark = new ArrayList<>(result);
         mMark.retainAll(mAnsKeys);
         int num = mMark.size();
         //TODO Logic About Corret And Wrong Ans
