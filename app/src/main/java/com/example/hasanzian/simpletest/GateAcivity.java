@@ -43,12 +43,12 @@ public class GateAcivity extends AppCompatActivity implements View.OnClickListen
     RadioButton mRadiobuttonA, mRadiobuttonB, mRadiobuttonC, mRadiobuttonD;
     RadioGroup mRadioGroup;
     //firebase code
-    DatabaseReference mRef= FirebaseDatabase.getInstance().getReference("Que");
-    DatabaseReference mOptionA = FirebaseDatabase.getInstance().getReference("OpA");
-    DatabaseReference mOptionB = FirebaseDatabase.getInstance().getReference("OpB");
-    DatabaseReference mOptionC = FirebaseDatabase.getInstance().getReference("OpC");
-    DatabaseReference mOptionD = FirebaseDatabase.getInstance().getReference("OpD");
-    DatabaseReference RightOption = FirebaseDatabase.getInstance().getReference("Ans");
+    DatabaseReference mRef= FirebaseDatabase.getInstance().getReference("GATEQue");
+    DatabaseReference mOptionA = FirebaseDatabase.getInstance().getReference("GATEOpA");
+    DatabaseReference mOptionB = FirebaseDatabase.getInstance().getReference("GATEOpB");
+    DatabaseReference mOptionC = FirebaseDatabase.getInstance().getReference("GATEOpC");
+    DatabaseReference mOptionD = FirebaseDatabase.getInstance().getReference("GATEOpD");
+    DatabaseReference RightOption = FirebaseDatabase.getInstance().getReference("GATEAns");
     private ProgressBar mProgressBar;
     TextView textTimer;
     MyCountDownTimer myCountDownTimer;

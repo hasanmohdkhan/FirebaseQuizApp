@@ -22,7 +22,7 @@
 
         <activity
             android:name=".MainActivity"
-            android:label="Main">
+            android:label="Mock Test">
 
 
         </activity>

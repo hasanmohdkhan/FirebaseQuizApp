@@ -43,12 +43,12 @@ public class ThirdExamClass extends AppCompatActivity implements View.OnClickLis
     RadioButton mRadiobuttonA, mRadiobuttonB, mRadiobuttonC, mRadiobuttonD;
     RadioGroup mRadioGroup;
     //firebase code
-    DatabaseReference mRef= FirebaseDatabase.getInstance().getReference("Que3");
-    DatabaseReference mOptionA = FirebaseDatabase.getInstance().getReference("OpA3");
-    DatabaseReference mOptionB = FirebaseDatabase.getInstance().getReference("OpB3");
-    DatabaseReference mOptionC = FirebaseDatabase.getInstance().getReference("OpC3");
-    DatabaseReference mOptionD = FirebaseDatabase.getInstance().getReference("OpD3");
-    DatabaseReference RightOption = FirebaseDatabase.getInstance().getReference("Ans3");
+    DatabaseReference mRef= FirebaseDatabase.getInstance().getReference("APPQue");
+    DatabaseReference mOptionA = FirebaseDatabase.getInstance().getReference("APPOpA");
+    DatabaseReference mOptionB = FirebaseDatabase.getInstance().getReference("APPOpB");
+    DatabaseReference mOptionC = FirebaseDatabase.getInstance().getReference("APPOpC");
+    DatabaseReference mOptionD = FirebaseDatabase.getInstance().getReference("APPOpD");
+    DatabaseReference RightOption = FirebaseDatabase.getInstance().getReference("APPAns");
     private ProgressBar mProgressBar;
     TextView textTimer;
     MyCountDownTimer myCountDownTimer;
@@ -367,5 +367,5 @@ public class ThirdExamClass extends AppCompatActivity implements View.OnClickLis
 
 
 
-    // end of MainActivity
+    // end of class
 }
