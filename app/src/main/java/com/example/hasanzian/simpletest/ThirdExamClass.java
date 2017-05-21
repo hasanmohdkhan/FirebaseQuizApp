@@ -49,10 +49,9 @@ public class ThirdExamClass extends AppCompatActivity implements View.OnClickLis
     DatabaseReference mOptionC = FirebaseDatabase.getInstance().getReference("APPOpC");
     DatabaseReference mOptionD = FirebaseDatabase.getInstance().getReference("APPOpD");
     DatabaseReference RightOption = FirebaseDatabase.getInstance().getReference("APPAns");
-    private ProgressBar mProgressBar;
     TextView textTimer;
     MyCountDownTimer myCountDownTimer;
-
+    private ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -176,7 +175,7 @@ public class ThirdExamClass extends AppCompatActivity implements View.OnClickLis
 
 
                 }
-                myCountDownTimer = new MyCountDownTimer(10000, 1000);
+                myCountDownTimer = new MyCountDownTimer(60000, 1000);
                 myCountDownTimer.start();
                 mButton.setVisibility(View.VISIBLE);
                 mSubmit.setVisibility(View.VISIBLE);

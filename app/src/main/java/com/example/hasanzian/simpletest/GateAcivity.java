@@ -43,16 +43,15 @@ public class GateAcivity extends AppCompatActivity implements View.OnClickListen
     RadioButton mRadiobuttonA, mRadiobuttonB, mRadiobuttonC, mRadiobuttonD;
     RadioGroup mRadioGroup;
     //firebase code
-    DatabaseReference mRef= FirebaseDatabase.getInstance().getReference("GATEQue");
-    DatabaseReference mOptionA = FirebaseDatabase.getInstance().getReference("GATEOpA");
-    DatabaseReference mOptionB = FirebaseDatabase.getInstance().getReference("GATEOpB");
-    DatabaseReference mOptionC = FirebaseDatabase.getInstance().getReference("GATEOpC");
-    DatabaseReference mOptionD = FirebaseDatabase.getInstance().getReference("GATEOpD");
-    DatabaseReference RightOption = FirebaseDatabase.getInstance().getReference("GATEAns");
-    private ProgressBar mProgressBar;
+    DatabaseReference mRef = FirebaseDatabase.getInstance().getReference("GQue");
+    DatabaseReference mOptionA = FirebaseDatabase.getInstance().getReference("GOpA");
+    DatabaseReference mOptionB = FirebaseDatabase.getInstance().getReference("GOpB");
+    DatabaseReference mOptionC = FirebaseDatabase.getInstance().getReference("GOpC");
+    DatabaseReference mOptionD = FirebaseDatabase.getInstance().getReference("GOpD");
+    DatabaseReference RightOption = FirebaseDatabase.getInstance().getReference("GAns");
     TextView textTimer;
     MyCountDownTimer myCountDownTimer;
-
+    private ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -176,7 +175,7 @@ public class GateAcivity extends AppCompatActivity implements View.OnClickListen
 
 
                 }
-                myCountDownTimer = new MyCountDownTimer(10000, 1000);
+                myCountDownTimer = new MyCountDownTimer(100000, 1000);
                 myCountDownTimer.start();
                 mButton.setVisibility(View.VISIBLE);
                 mSubmit.setVisibility(View.VISIBLE);

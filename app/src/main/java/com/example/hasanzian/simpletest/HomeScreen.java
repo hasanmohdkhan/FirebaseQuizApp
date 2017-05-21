@@ -45,7 +45,7 @@ public class HomeScreen extends AppCompatActivity implements View.OnClickListene
         mExam.setOnClickListener(this);
         mChat.setOnClickListener(this);
         intent = new Intent(this, CategoryActivity.class);
-        i = new Intent(this, ChatScreen.class);
+        i = new Intent(this, CompareFile.class);
 
         //new Auth listener
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
